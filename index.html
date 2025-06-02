@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HKAIFSC - 香港AI國際電影節提交中心</title>
+    <title>HKAIFSC - 香港AI國際電影節征片中心</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Orbitron:wght@700;800&display=swap" rel="stylesheet">
@@ -83,6 +83,7 @@
             background-color: rgba(10, 10, 10, 0.95);
             backdrop-filter: blur(10px);
             border-bottom: 1px solid rgba(0, 255, 157, 0.1);
+            height: 70px;
         }
         
         .btn-primary {
@@ -116,6 +117,7 @@
             display: flex;
             align-items: center;
             min-height: 100vh;
+            padding-top: 70px; /* 为导航栏留出空间 */
         }
         
         .hero:before {
@@ -373,35 +375,62 @@
             .hero {
                 min-height: 80vh;
             }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+                line-height: 1.2;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .nav-buttons {
+                display: none !important;
+            }
+            
+            .ai-element {
+                display: none;
+            }
+            
+            .stats-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+            }
+            
+            .hero-buttons a {
+                width: 100%;
+                margin-bottom: 10px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .feature-icon {
+                width: 60px;
+                height: 60px;
+                font-size: 1.5rem;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- AI Elements -->
-    <div class="ai-element" style="top: 120px; left: 10%;">
-        提交ID: AIF-2025 <br>
-        狀態: 收集中 <br>
-        // 全球網絡活躍
-    </div>
-    
-    <div class="ai-element" style="bottom: 150px; right: 15%;">
-        全球節點: 26 活躍 <br>
-        提交作品: 1,200+ <br>
-        // 分發網絡在線
-    </div>
-    
-    <!-- Data streams -->
-    <div class="data-stream" style="left: 20%; animation-delay: 0s;"></div>
-    <div class="data-stream" style="left: 40%; animation-delay: 0.5s;"></div>
-    <div class="data-stream" style="left: 60%; animation-delay: 1s;"></div>
-    <div class="data-stream" style="left: 80%; animation-delay: 1.5s;"></div>
-
-    <!-- Navigation -->
+    <!-- 导航栏 -->
     <nav class="navbar fixed w-full z-50 px-4 py-3">
         <div class="container mx-auto flex justify-between items-center">
             <a href="#" class="flex flex-col">
                 <div class="logo-font text-2xl md:text-3xl">AIF.CENTER</div>
-                <div class="logo-sub text-xs">提交中心</div>
+                <div class="logo-sub text-xs">征片中心</div>
             </a>
             <div class="hidden md:flex space-x-8 desktop-nav">
                 <a href="#about" class="hover:text-blue-400 transition">關於我們</a>
@@ -411,9 +440,9 @@
                 <a href="#pricing" class="hover:text-blue-400 transition">價格方案</a>
                 <a href="#contact" class="hover:text-blue-400 transition">聯繫我們</a>
             </div>
-            <div class="flex items-center space-x-4">
-                <a href="#submit" class="btn-secondary px-6 py-2 rounded-full text-sm">提交作品</a>
-                <a href="#partner" class="btn-primary px-6 py-2 rounded-full text-sm">成為合作夥伴</a>
+            <div class="flex items-center space-x-4 nav-buttons">
+                <a href="#submit" class="btn-secondary px-6 py-2 rounded-full text-sm hidden md:block">提交作品</a>
+                <a href="#partner" class="btn-primary px-6 py-2 rounded-full text-sm hidden md:block">成為合作夥伴</a>
                 
                 <button class="md:hidden text-white mobile-menu-btn">
                     <i class="fas fa-bars text-xl"></i>
@@ -422,7 +451,7 @@
         </div>
     </nav>
 
-    <!-- Mobile Menu -->
+    <!-- 移动菜单 -->
     <div class="mobile-menu">
         <div class="mobile-menu-close cursor-pointer text-right mb-8">
             <i class="fas fa-times text-xl"></i>
@@ -447,7 +476,7 @@
         </div>
     </div>
 
-    <!-- Hero Section -->
+    <!-- 英雄区 -->
     <section class="hero">
         <div class="hero-bg"></div>
         <div class="container mx-auto px-4 hero-content">
@@ -459,7 +488,7 @@
                 <p class="text-xl md:text-2xl text-gray-300 mb-8 max-w-3xl">
                     全球首個綜合平台，通過我們革命性的提交、優化和分發生態系統，將AI原生電影創作者與全球觀眾聯繫起來。
                 </p>
-                <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-6 mb-12">
+                <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-6 mb-12 hero-buttons">
                     <a href="#submit" class="btn-primary px-8 py-4 rounded-full font-medium text-center text-lg">
                         <i class="fas fa-upload mr-2"></i>
                         提交您的作品
@@ -470,8 +499,8 @@
                     </a>
                 </div>
                 
-                <!-- Key Metrics -->
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <!-- 关键指标 -->
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 stats-grid">
                     <div class="stats-card">
                         <i class="fas fa-globe"></i>
                         <div class="number">26+</div>
@@ -497,7 +526,7 @@
         </div>
     </section>
 
-    <!-- About Section -->
+    <!-- 关于我们 -->
     <section id="about" class="py-20">
         <div class="container mx-auto px-4">
             <div class="max-w-4xl mx-auto text-center mb-16">
@@ -560,7 +589,7 @@
                 </div>
             </div>
 
-            <!-- Revenue Streams -->
+            <!-- 收入来源 -->
             <div class="card p-8">
                 <h3 class="text-3xl font-bold mb-8 text-center">多元化收入來源</h3>
                 <div class="grid md:grid-cols-3 gap-8">
@@ -599,7 +628,7 @@
         </div>
     </section>
 
-    <!-- Partnership Program -->
+    <!-- 合作伙伴计划 -->
     <section class="py-20">
         <div class="container mx-auto px-4">
             <div class="text-center mb-16">
@@ -612,7 +641,7 @@
             </div>
 
             <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
-                <!-- Film Festivals -->
+                <!-- 电影节 -->
                 <div class="card p-6 text-center">
                     <div class="feature-icon mx-auto">
                         <i class="fas fa-trophy"></i>
@@ -626,7 +655,7 @@
                     </ul>
                 </div>
 
-                <!-- Technology Giants -->
+                <!-- 技术伙伴 -->
                 <div class="card p-6 text-center">
                     <div class="feature-icon mx-auto">
                         <i class="fas fa-microchip"></i>
@@ -640,7 +669,7 @@
                     </ul>
                 </div>
 
-                <!-- Distribution Channels -->
+                <!-- 媒体伙伴 -->
                 <div class="card p-6 text-center">
                     <div class="feature-icon mx-auto">
                         <i class="fas fa-broadcast-tower"></i>
@@ -654,7 +683,7 @@
                     </ul>
                 </div>
 
-                <!-- Service Providers -->
+                <!-- 服务伙伴 -->
                 <div class="card p-6 text-center">
                     <div class="feature-icon mx-auto">
                         <i class="fas fa-handshake"></i>
@@ -669,7 +698,7 @@
                 </div>
             </div>
 
-            <!-- Partnership Benefits -->
+            <!-- 合作伙伴优势 -->
             <div class="card p-8">
                 <h3 class="text-3xl font-bold mb-8 text-center">合作夥伴優勢與機會</h3>
                 <div class="grid md:grid-cols-2 gap-8">
@@ -720,7 +749,7 @@
         </div>
     </section>
 
-    <!-- Services Section -->
+    <!-- 服务生态系统 -->
     <section id="services" class="py-20 bg-gray-900 bg-opacity-50">
         <div class="container mx-auto px-4">
             <div class="text-center mb-16">
@@ -732,9 +761,9 @@
                 </p>
             </div>
 
-            <!-- Service Categories -->
+            <!-- 服务分类 -->
             <div class="grid md:grid-cols-3 gap-8 mb-16">
-                <!-- Consulting Services -->
+                <!-- 咨询服务 -->
                 <div class="service-card">
                     <div class="feature-icon">
                         <i class="fas fa-lightbulb"></i>
@@ -752,7 +781,7 @@
                     </div>
                 </div>
 
-                <!-- Token Services -->
+                <!-- 代币服务 -->
                 <div class="service-card">
                     <div class="feature-icon">
                         <i class="fas fa-coins"></i>
@@ -770,7 +799,7 @@
                     </div>
                 </div>
 
-                <!-- Copyright Services -->
+                <!-- 版权服务 -->
                 <div class="service-card">
                     <div class="feature-icon">
                         <i class="fas fa-shield-alt"></i>
@@ -790,7 +819,7 @@
             </div>
 
             <div class="grid md:grid-cols-3 gap-8">
-                <!-- Localization Services -->
+                <!-- 本地化服务 -->
                 <div class="service-card">
                     <div class="feature-icon">
                         <i class="fas fa-globe"></i>
@@ -808,7 +837,7 @@
                     </div>
                 </div>
 
-                <!-- Festival & Exhibition -->
+                <!-- 电影节展览 -->
                 <div class="service-card">
                     <div class="feature-icon">
                         <i class="fas fa-trophy"></i>
@@ -826,7 +855,7 @@
                     </div>
                 </div>
 
-                <!-- Distribution Services -->
+                <!-- 分发服务 -->
                 <div class="service-card">
                     <div class="feature-icon">
                         <i class="fas fa-share-alt"></i>
@@ -847,7 +876,7 @@
         </div>
     </section>
 
-    <!-- Ecosystem Integration -->
+    <!-- 生态系统整合 -->
     <section id="ecosystem" class="py-20">
         <div class="container mx-auto px-4">
             <div class="text-center mb-16">
@@ -859,7 +888,7 @@
                 </p>
             </div>
 
-            <!-- Ecosystem Diagram -->
+            <!-- 生态系统图 -->
             <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
                 <div class="text-center">
                     <div class="ecosystem-node">
@@ -891,7 +920,7 @@
                 </div>
             </div>
 
-            <!-- Content Flow Mechanism -->
+            <!-- 内容流通机制 -->
             <div class="card p-8 mb-16">
                 <h3 class="text-3xl font-bold mb-8 text-center">內容流通機制</h3>
                 <div class="grid md:grid-cols-4 gap-6">
@@ -914,7 +943,7 @@
                 </div>
             </div>
 
-            <!-- Value Propositions -->
+            <!-- 价值主张 -->
             <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
                 <div class="card p-6">
                     <h4 class="text-xl font-bold mb-4 text-blue-400">對創作者</h4>
@@ -960,7 +989,7 @@
         </div>
     </section>
 
-    <!-- Global Network -->
+    <!-- 全球网络 -->
     <section id="network" class="py-20 bg-gray-900 bg-opacity-50">
         <div class="container mx-auto px-4">
             <div class="text-center mb-16">
@@ -972,7 +1001,7 @@
                 </p>
             </div>
 
-            <!-- Network Architecture -->
+            <!-- 网络架构 -->
             <div class="grid md:grid-cols-3 gap-8 mb-16">
                 <div class="card p-8 text-center">
                     <div class="feature-icon mx-auto">
@@ -1021,7 +1050,7 @@
                 </div>
             </div>
 
-            <!-- Regional Tiers -->
+            <!-- 区域授权等级 -->
             <div class="card p-8 mb-16">
                 <h3 class="text-3xl font-bold mb-8 text-center">區域授權等級</h3>
                 <div class="grid md:grid-cols-3 gap-8">
@@ -1063,7 +1092,7 @@
                 </div>
             </div>
 
-            <!-- Submission Standards -->
+            <!-- 提交标准 -->
             <div class="grid md:grid-cols-2 gap-8">
                 <div class="card p-8">
                     <h3 class="text-2xl font-bold mb-6">AI原生認證標準</h3>
@@ -1137,7 +1166,7 @@
         </div>
     </section>
 
-    <!-- Pricing Section -->
+    <!-- 价格方案 -->
     <section id="pricing" class="py-20">
         <div class="container mx-auto px-4">
             <div class="text-center mb-16">
@@ -1149,7 +1178,7 @@
                 </p>
             </div>
 
-            <!-- Service Packages -->
+            <!-- 服务套餐 -->
             <div class="grid md:grid-cols-3 gap-8 mb-16">
                 <div class="pricing-card">
                     <h3 class="text-2xl font-bold mb-4">入門套餐</h3>
@@ -1204,7 +1233,7 @@
                 </div>
             </div>
 
-            <!-- Payment Systems -->
+            <!-- 支付系统 -->
             <div class="card p-8">
                 <h3 class="text-3xl font-bold mb-8 text-center">雙貨幣支付系統</h3>
                 <div class="grid md:grid-cols-2 gap-8">
@@ -1231,7 +1260,7 @@
         </div>
     </section>
 
-    <!-- Revenue Projections -->
+    <!-- 收入预测 -->
     <section class="py-20 bg-gray-900 bg-opacity-50">
         <div class="container mx-auto px-4">
             <div class="text-center mb-16">
@@ -1244,7 +1273,7 @@
             </div>
 
             <div class="grid md:grid-cols-2 gap-8 mb-16">
-                <!-- Revenue Growth -->
+                <!-- 收入增长 -->
                 <div class="card p-8">
                     <h3 class="text-2xl font-bold mb-6">收入增長軌跡</h3>
                     <div class="space-y-6">
@@ -1283,7 +1312,7 @@
                     </div>
                 </div>
 
-                <!-- Profitability Metrics -->
+                <!-- 盈利能力指标 -->
                 <div class="card p-8">
                     <h3 class="text-2xl font-bold mb-6">盈利能力指標</h3>
                     <div class="space-y-4">
@@ -1307,7 +1336,7 @@
                 </div>
             </div>
 
-            <!-- Core Positioning -->
+            <!-- 核心定位 -->
             <div class="text-center mb-16">
                 <h3 class="text-3xl font-bold mb-8">核心定位</h3>
                 <div class="grid md:grid-cols-4 gap-6">
@@ -1344,7 +1373,7 @@
         </div>
     </section>
 
-    <!-- Contact Section -->
+    <!-- 联系我们 -->
     <section id="contact" class="py-20 bg-gray-900 bg-opacity-50">
         <div class="container mx-auto px-4">
             <div class="max-w-4xl mx-auto">
@@ -1358,7 +1387,7 @@
                 </div>
 
                 <div class="grid md:grid-cols-2 gap-12">
-                    <!-- Contact Form -->
+                    <!-- 联系表单 -->
                     <div class="card p-8">
                         <h3 class="text-2xl font-bold mb-6">立即開始</h3>
                         <form class="space-y-6">
@@ -1390,7 +1419,7 @@
                         </form>
                     </div>
 
-                    <!-- Contact Information -->
+                    <!-- 联系信息 -->
                     <div class="space-y-8">
                         <div class="card p-6">
                             <h4 class="text-xl font-bold mb-4">全球總部</h4>
@@ -1452,14 +1481,14 @@
         </div>
     </section>
 
-    <!-- Footer -->
+    <!-- 页脚 -->
     <footer class="py-12">
         <div class="container mx-auto px-4">
             <div class="grid md:grid-cols-4 gap-8">
                 <div>
                     <a href="#" class="flex flex-col mb-4">
                         <div class="logo-font text-2xl">AIF.CENTER</div>
-                        <div class="logo-sub text-xs">提交中心</div>
+                        <div class="logo-sub text-xs">征片中心</div>
                     </a>
                     <p class="text-gray-400 mb-4">
                         全球首個AI原生電影分發綜合平台，通過創新技術將創作者與全球觀眾連接起來。
@@ -1510,7 +1539,7 @@
             
             <div class="border-t border-gray-800 mt-8 pt-8 flex flex-col md:flex-row justify-between">
                 <p class="text-gray-500 text-sm mb-4 md:mb-0">
-                    © 2025 香港AI國際電影節提交中心。保留所有權利。
+                    © 2025 香港AI國際電影節协会有限公司。保留所有權利。
                 </p>
                 <div class="flex flex-wrap gap-4">
                     <a href="#" class="text-gray-500 text-sm hover:text-blue-400">隱私政策</a>
@@ -1537,7 +1566,7 @@
         </div>
     </footer>
 
-    <!-- Floating Action Buttons -->
+    <!-- 浮动操作按钮 -->
     <div class="fixed bottom-6 right-6 z-10 flex flex-col space-y-3">
         <button class="bg-gradient w-14 h-14 rounded-full flex items-center justify-center shadow-lg hover:opacity-90 transition" title="AI助手">
             <i class="fas fa-robot text-xl"></i>
@@ -1547,7 +1576,7 @@
         </button>
     </div>
 
-    <!-- AI Status Indicator -->
+    <!-- AI状态指示器 -->
     <div class="fixed bottom-6 left-6 z-10">
         <div class="bg-gradient rounded-full p-1 shadow-lg">
             <div class="bg-gray-900 rounded-full p-2 flex items-center space-x-2">
@@ -1561,25 +1590,7 @@
     </div>
 
     <script>
-        // Add random data streams
-        function createDataStreams() {
-            for (let i = 0; i < 5; i++) {
-                setTimeout(() => {
-                    const stream = document.createElement('div');
-                    stream.className = 'data-stream';
-                    stream.style.left = Math.random() * 100 + '%';
-                    stream.style.animationDelay = Math.random() * 2 + 's';
-                    document.body.appendChild(stream);
-                    
-                    // Remove after animation
-                    setTimeout(() => {
-                        stream.remove();
-                    }, 4000);
-                }, i * 3000);
-            }
-        }
-        
-        // Smooth scrolling for anchor links
+        // 添加平滑滚动效果
         function smoothScroll() {
             const links = document.querySelectorAll('a[href^="#"]');
             links.forEach(link => {
@@ -1596,16 +1607,12 @@
             });
         }
         
-        // Initialize
+        // 初始化
         document.addEventListener('DOMContentLoaded', function() {
-            // Start data streams
-            createDataStreams();
-            setInterval(createDataStreams, 15000);
-            
-            // Initialize smooth scrolling
+            // 初始化平滑滚动
             smoothScroll();
             
-            // Add scroll animations
+            // 添加滚动动画
             const animatedElements = document.querySelectorAll('.animate-fade-in, .animate-slide-up');
             
             const observer = new IntersectionObserver((entries) => {
@@ -1633,7 +1640,7 @@
                 observer.observe(el);
             });
             
-            // Mobile menu functionality
+            // 移动菜单功能
             const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
             const mobileMenu = document.querySelector('.mobile-menu');
             const mobileMenuClose = document.querySelector('.mobile-menu-close');
@@ -1650,7 +1657,7 @@
                 });
             }
             
-            // Form submission handler
+            // 表单提交处理
             const contactForm = document.querySelector('form');
             if (contactForm) {
                 contactForm.addEventListener('submit', (e) => {
@@ -1660,7 +1667,7 @@
                 });
             }
             
-            // Newsletter subscription
+            // 通讯订阅
             const newsletterForm = document.querySelector('footer form');
             if (newsletterForm) {
                 newsletterForm.addEventListener('submit', (e) => {
