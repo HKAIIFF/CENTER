@@ -353,12 +353,14 @@
             padding: 20px;
             transform: translateX(100%);
             transition: transform 0.3s ease;
+            overflow-y: auto;
         }
         
         .mobile-menu.open {
             transform: translateX(0);
         }
         
+        /* 移动端优化 */
         @media (max-width: 768px) {
             .desktop-nav {
                 display: none;
@@ -374,6 +376,7 @@
             
             .hero {
                 min-height: 80vh;
+                padding-top: 60px;
             }
             
             .hero h1 {
@@ -405,6 +408,48 @@
                 width: 100%;
                 margin-bottom: 10px;
             }
+            
+            /* 移动端卡片内边距调整 */
+            .card, .pricing-card, .service-card {
+                padding: 1.5rem;
+            }
+            
+            /* 移动端标题大小调整 */
+            h2, h3 {
+                font-size: 1.8rem;
+            }
+            
+            /* 移动端按钮尺寸优化 */
+            .btn-primary, .btn-secondary {
+                padding: 0.8rem 1.5rem;
+                font-size: 1rem;
+            }
+            
+            /* 移动端菜单优化 */
+            .mobile-menu {
+                width: 80%;
+            }
+            
+            /* 移动端表单优化 */
+            input, textarea, select {
+                font-size: 1rem;
+                padding: 0.8rem;
+            }
+            
+            /* 移动端分栏优化 */
+            .grid-cols-3, .grid-cols-4 {
+                grid-template-columns: 1fr;
+            }
+            
+            /* 移动端时间轴优化 */
+            .timeline-item {
+                padding-left: 1.5rem;
+            }
+            
+            /* 移动端页脚优化 */
+            footer .grid {
+                grid-template-columns: 1fr;
+            }
         }
         
         @media (max-width: 480px) {
@@ -420,6 +465,20 @@
                 width: 60px;
                 height: 60px;
                 font-size: 1.5rem;
+            }
+            
+            .hero-buttons a {
+                font-size: 1rem;
+                padding: 1rem;
+            }
+            
+            .mobile-menu {
+                width: 100%;
+            }
+            
+            .ecosystem-node {
+                width: 100px;
+                height: 100px;
             }
         }
     </style>
@@ -466,12 +525,12 @@
             <a href="#contact" class="text-xl hover:text-blue-400 transition">聯繫我們</a>
             
             <div class="pt-6 border-t border-gray-700">
-                <button class="btn-secondary w-full py-3 rounded-lg font-medium text-center mb-4">
+                <a href="#submit" class="btn-secondary w-full py-3 rounded-lg font-medium text-center mb-4 block">
                     提交作品
-                </button>
-                <button class="btn-primary w-full py-3 rounded-lg font-medium text-center">
+                </a>
+                <a href="#partner" class="btn-primary w-full py-3 rounded-lg font-medium text-center block">
                     成為合作夥伴
-                </button>
+                </a>
             </div>
         </div>
     </div>
@@ -1602,6 +1661,12 @@
                             behavior: 'smooth',
                             block: 'start'
                         });
+                        
+                        // 移动端菜单关闭
+                        if (window.innerWidth < 768) {
+                            mobileMenu.classList.remove('open');
+                            document.body.style.overflow = 'auto';
+                        }
                     }
                 });
             });
@@ -1654,6 +1719,14 @@
                 mobileMenuClose.addEventListener('click', () => {
                     mobileMenu.classList.remove('open');
                     document.body.style.overflow = 'auto';
+                });
+                
+                // 移动端菜单点击关闭
+                mobileMenu.querySelectorAll('a, button').forEach(item => {
+                    item.addEventListener('click', () => {
+                        mobileMenu.classList.remove('open');
+                        document.body.style.overflow = 'auto';
+                    });
                 });
             }
             
